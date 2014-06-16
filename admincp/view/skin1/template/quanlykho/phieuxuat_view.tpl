@@ -1,23 +1,25 @@
+
 <center>
-    <h2>Phiếu bán hàng</h2>
+    <h1>HÓA ĐƠN BÁN HÀNG</h1>
     
 </center>
 <table>
 	<tr>
     	<td>
             <div class="cusinfo">
-                <label>Khách hàng:</label> <?php echo $item['tenkhachhang']?> - <label>ĐT:</label> <?php echo $item['dienthoai']?>
+                <label>Khách hàng:</label> <?php echo $item['tenkhachhang']?> <?php if($item['ghichu'] !="" ) echo " - ".$item['ghichu']?>
             </div>
             <div class="cusinfo">
-                <label>Địa chỉ:</label> <?php echo $item['diachi']?>
+            	<label>SĐT Liên hệ:</label> <?php echo $item['dienthoai']?>
+            </div>
+            <div class="cusinfo">
+                <label>Địa chỉ giao hàng:</label> <?php echo $item['diachi']?>
                 
-                <!--<?php echo $this->document->getCustomer($item['khachhangid'],'address')?>-->
+                
             </div>
         </td>
         <td align="right">
-        	<p>
-            	Ngày <?php echo $this->date->getDay($item['ngaylap'])?> tháng <?php echo $this->date->getMonth($item['ngaylap'])?> năm <?php echo $this->date->getYear($item['ngaylap'])?>
-            </p>
+        	
             <p>
                 <label>Số:</label> <?php echo $item['maphieu']?>
             </p>
@@ -31,9 +33,9 @@
             <th>STT</th>
             
             <th>Sản phẩm</th>
-			<th>Nhãn hiệu</th>            
+			  
             <th>SL</th>
-            <!--<th>Đơn vị</th>-->
+            <th>ĐVT</th>
             <th>Giá</th>
             <th>Thành tiền</th>
         </tr>
@@ -43,12 +45,12 @@
         <?php foreach($data_nhapkho as $key =>$val){ ?>
             
         <tr>
-            <td><center><?php echo $key+1?></center></td>
+            <td align="center"><?php echo $key+1?></td>
             
             <td><?php echo $this->document->productName($val['mediaid'])?></td>
-            <td><font style="text-transform:uppercase"><?php echo $this->document->getCategory($this->document->getMedia($val['mediaid'],'brand'))?></font></td>
-            <td class="number"><?php echo $this->string->numberFormate($val['soluong'])?></td>
-            <!--<td><?php echo $this->document->getDonViTinh($val['madonvi'])?></td>-->
+            
+            <td class="number" align="center"><?php echo $this->string->numberFormate($val['soluong'])?></td>
+            <td align="center"><?php echo $this->document->getDonViTinh($val['madonvi'])?></td>
             <td class="number"><?php echo $this->string->numberFormate($val['giatien'] - $val['giamgia'])?></td>
             <td class="number"><?php if($val['thanhtien']) echo $this->string->numberFormate($val['thanhtien']); else echo "Tặng"?></td>
             
@@ -68,21 +70,27 @@
         <tr>
             
            	<td></td>
+            <td><strong>Cộng</strong></td>
             <td></td>
             <td></td>
             <td></td>
-            <td class="number"><strong>Tổng tiền</strong></td>
-            <td class="number"><?php echo $this->string->numberFormate($item['tongtien'])?></td>
+            <td class="number"><strong><?php echo $this->string->numberFormate($item['tongtien'])?></strong></td>
         </tr>
         
     </tbody>
 </table>
+<p style="font-style:italic;text-decoration:underline;">
+	Số tiền bằng chữ: <?php echo $this->string->doc_so($item['tongtien']);?>
+</p>
+<p style="text-align:center">
+    TP.HCM Ngày <?php echo $this->date->getDay($item['ngaylap'])?> tháng <?php echo $this->date->getMonth($item['ngaylap'])?> năm <?php echo $this->date->getYear($item['ngaylap'])?>
+</p>
 <table style="margin:15px 0">
 	<tr>
     	
-        <th width="20%">Người lập phiếu</th>
-        <th width="20%">Khách hàng</th>
-        <th width="20%">Thủ quỷ</th>
+        <th width="20%">Thủ Trưởng Đơn Vị</th>
+        <th width="20%">Thủ Kho</th>
+        <th width="20%">TVV Bán Hàng</th>
     </tr>
     <tr>
     	

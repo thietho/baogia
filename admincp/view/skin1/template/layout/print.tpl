@@ -11,18 +11,23 @@
 <style>
 body
 {
-	font-family:Tahoma, Geneva, sans-serif;	
-	font: normal 72% sans-serif;
+	font-family:"Times New Roman", Times, serif;
+	font: normal 75% serif;
+	
 }
 h1,h2,h3,h4,h5,h6 
 {
 	margin:2px 0;
 	text-transform:uppercase
 }
+h1
+{
+	font-size:2.2em;	
+}
 p
 {
 	margin:0;	
-	font-size:0.8em;
+	
 }
 table
 {
@@ -32,7 +37,7 @@ table
 }
 .cusinfo
 {
-	font-size:0.9em;	
+	
 }
 .number {
 	text-align: right;
@@ -43,7 +48,7 @@ table
 .text-separator {padding: 0 5px;}
 .table-data td
 {
-	border-top:thin dashed #666;
+	border-top:thin solid #000;
 	border-left:thin solid #000;
 }
 .table-data th
@@ -68,16 +73,29 @@ label
 
 <div id="site-wrapper">
 
-<div class="main">
-<center>
-	<?php echo html_entity_decode($this->document->setup['HeaderBill'])?>
-</center>
-<div id="main-content"><?php echo $content?></div>
-
-<div class="clearer">&nbsp;</div>
-
-
-</div>
+    <div class="main">
+    
+        <?php echo html_entity_decode($this->document->setup['HeaderBill'])?>
+        
+    	<table style="position:absolute;z-index:-1">
+        	<tr valign="top">
+            	<td>
+                	<img src="<?php echo DIR_IMAGE?>logo-cjb.jpg" />
+                </td>
+                <td align="center">
+                	CÔNG TY TNHH TRUYỀN GIA BẢO<br />
+                    621/14A Tỉnh Lộ 10, P.Bình Trị Đông B, Q.Bình Tân TP.HCM<br />
+                    Tel: 08.625.777.99 Fax:08.6269.3669
+                </td>
+            </tr>
+            
+        </table>
+        <div id="main-content" style="padding-top:70px"><?php echo $content?></div>
+        
+        <div class="clearer">&nbsp;</div>
+    
+    
+    </div>
 
 
 

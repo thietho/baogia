@@ -554,7 +554,7 @@ final class String
 	
 	function doc3so($so)
 	{
-		$achu = array ( " không "," một "," hai "," ba "," bốn "," năm "," sáu "," bảy "," tám "," chín " );
+		$achu = array ( " Không "," Một "," Hai "," Ba "," Bốn "," Năm "," Sáu "," Bảy "," Tám "," Chín " );
 		$aso = array ( "0","1","2","3","4","5","6","7","8","9" );
 		$kq = "";
 		$tram = floor($so/100); // Hàng trăm
@@ -563,21 +563,21 @@ final class String
 		if($tram==0 && $chuc==0 && $donvi==0) $kq = "";
 		if($tram!=0)
 		{
-			$kq .= $achu[$tram] . " trăm ";
-			if (($chuc == 0) && ($donvi != 0)) $kq .= " lẻ ";
+			$kq .= $achu[$tram] . " Trăm ";
+			if (($chuc == 0) && ($donvi != 0)) $kq .= " Lẻ ";
 		}
 		if (($chuc != 0) && ($chuc != 1))
 		{
-			$kq .= $achu[$chuc] . " mươi";
-			if (($chuc == 0) && ($donvi != 0)) $kq .= " linh ";
+			$kq .= $achu[$chuc] . " Mươi";
+			if (($chuc == 0) && ($donvi != 0)) $kq .= " Linh ";
 		}
-		if ($chuc == 1) $kq .= " mười ";
+		if ($chuc == 1) $kq .= " Mười ";
 		switch ($donvi)
 		{
 		case 1:
 		if (($chuc != 0) && ($chuc != 1))
 		{
-			$kq .= " mốt ";
+			$kq .= " Mốt ";
 		}
 		else
 		{
@@ -591,7 +591,7 @@ final class String
 		}
 		else
 		{
-			$kq .= " lăm ";
+			$kq .= " Lăm ";
 		}
 		break;
 		default:
@@ -614,7 +614,7 @@ final class String
 			$kq = "";
 			$c = 0;
 			$d = 0;
-			$tien = array ( "", " nghìn", " triệu", " tỷ", " nghìn tỷ", " triệu tỷ", " tỷ tỷ" );
+			$tien = array ( "", " Nghìn", " Triệu", " Tỷ", " Nghìn Tỷ", " Triệu Tỷ", " Tỷ Tỷ" );
 			for ($i = 0; $i < strlen($so); $i++)
 			{
 				if ($so[$i] == "0")
