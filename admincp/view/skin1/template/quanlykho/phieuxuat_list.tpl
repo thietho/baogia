@@ -49,7 +49,7 @@
             	<?php if($dialog==true){ ?>
             	
                 <?php }else{ ?>
-                
+                <input class="button" id="btnPrint" value="In" type="button">
                 <?php if($this->user->checkPermission("quanlykho/phieuxuat/insert")==true){ ?>
                 <input class="button" value="Thêm" type="button" onclick="linkto('<?php echo $insert?>')">
                 <?php } ?>
@@ -71,7 +71,17 @@
     
 </div>
 <script language="javascript">
-
+$('#btnPrint').click(function(e) {
+	var arrid = new Array();
+    $('.inputchk').each(function(index, element) {
+        if(this.checked)
+		{
+			arrid.push(this.value);	
+		}
+    });
+	
+	objdl.printPX(arrid.join("-"));
+});
 function deleteitem()
 {
 	var answer = confirm("Bạn có muốn xóa không?")

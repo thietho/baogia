@@ -42,10 +42,12 @@
     </thead>
     <tbody>
     	
-        <?php foreach($data_nhapkho as $key =>$val){ ?>
-            
+        
+        <?php for($i=0;$i<6;$i++){ ?>    
+        	<?php $val = $data_nhapkho[$i]?>
+            <?php if(count($val)){ ?>
         <tr>
-            <td align="center"><?php echo $key+1?></td>
+            <td align="center"><?php echo $i+1?></td>
             
             <td><?php echo $this->document->productName($val['mediaid'])?></td>
             
@@ -55,6 +57,19 @@
             <td class="number"><?php if($val['thanhtien']) echo $this->string->numberFormate($val['thanhtien']); else echo "Tặng"?></td>
             
         </tr>
+        	<?php } else{ ?>
+        <tr>
+            <td align="center"><?php echo $i+1?></td>
+            
+            <td></td>
+            
+            <td align="center"></td>
+            <td align="center"></td>
+            <td class="number"></td>
+            <td class="number"></td>
+            
+        </tr>    
+            <?php }?>
         <?php } ?>
         <?php if($item['thuphi'] != 0){ ?>
         <tr>
@@ -82,10 +97,10 @@
 <p style="font-style:italic;text-decoration:underline;">
 	Số tiền bằng chữ: <?php echo $this->string->doc_so($item['tongtien']);?>
 </p>
-<p style="text-align:center">
+<p style="text-align:right">
     TP.HCM Ngày <?php echo $this->date->getDay($item['ngaylap'])?> tháng <?php echo $this->date->getMonth($item['ngaylap'])?> năm <?php echo $this->date->getYear($item['ngaylap'])?>
 </p>
-<table style="margin:15px 0">
+<table style="margin:5px 0">
 	<tr>
     	
         <th width="20%">Thủ Trưởng Đơn Vị</th>

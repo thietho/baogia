@@ -148,9 +148,10 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 		}
 		$this->render();
 	}
-	public function view()
+	public function view($id ="")
 	{
-		$id = $this->request->get['id'];
+		if($id =="")
+			$id = $this->request->get['id'];
 		if($id) 
 		{
       		$this->data['item'] = $this->model_quanlykho_phieunhapxuat->getItem($id);
@@ -167,7 +168,22 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 			$this->layout="layout/print";
 		$this->render();
 	}
-	
+	public function printlist()
+	{
+		$listid = $this->request->get['listid'];
+		$arrid = split("-",$listid);
+		
+		foreach($arrid as $key => $id)
+		{
+			$arr = array($id);
+			$this->data['output'].= $this->loadModule('quanlykho/phieuxuat','view',$arr);
+			if($key < count($arrid) - 1)
+				$this->data['output'] .= '<div style="page-break-after:always">&nbsp;</div>';
+		}
+		$this->id='content';
+		$this->template='common/output.tpl';
+		$this->render();
+	}
 	private function getForm()
 	{
 		$id = $this->request->get['id'];

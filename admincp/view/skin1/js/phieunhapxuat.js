@@ -95,6 +95,10 @@ function PhieuNhapXuat()
 		});
 		$('#sumsoluong').html(formateNumber(sum));
 	}
+	this.printPX = function(listid)
+	{
+		openDialog("?route=quanlykho/phieuxuat/printlist&listid="+listid+"&opendialog=print",800,500)
+	}
 	this.viewPX = function(id)
 	{
 		var eid = "popupviewphieu";
