@@ -76,20 +76,6 @@ label
     <div class="main">
     
         <?php echo html_entity_decode($this->document->setup['HeaderBill'])?>
-        
-    	<table style="position:absolute;z-index:-1">
-        	<tr valign="top">
-            	<td>
-                	<img src="<?php echo DIR_IMAGE?>logo-cjb.jpg" />
-                </td>
-                <td align="center">
-                	CÔNG TY TNHH TRUYỀN GIA BẢO<br />
-                    621/14A Tỉnh Lộ 10, P.Bình Trị Đông B, Q.Bình Tân TP.HCM<br />
-                    Tel: 08.625.777.99 Fax:08.6269.3669
-                </td>
-            </tr>
-            
-        </table>
         <div id="main-content" style="padding-top:70px"><?php echo $content?></div>
         
         <div class="clearer">&nbsp;</div>
