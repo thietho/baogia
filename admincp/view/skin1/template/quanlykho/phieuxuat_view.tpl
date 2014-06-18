@@ -113,6 +113,12 @@
         <td align="center"><i>(Ký, Họ tên)</i></td>
         <td align="center"><i>(Ký, Họ tên)</i></td>
     </tr>
+    <tr style="height:60px">
+    	
+        <td align="center"></td>
+        <td align="center"></td>
+        <td align="center"><?php echo $item['nguoithuchien']?></td>
+    </tr>
 </table>
 
 

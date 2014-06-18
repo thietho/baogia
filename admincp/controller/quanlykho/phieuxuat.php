@@ -177,8 +177,8 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 		{
 			$arr = array($id);
 			$this->data['output'].= $this->loadModule('quanlykho/phieuxuat','view',$arr);
-			if($key < count($arrid) - 1)
-				$this->data['output'] .= '<div style="page-break-after:always">&nbsp;</div>';
+			//if($key < count($arrid) - 1)
+				//$this->data['output'] .= '<div style="page-break-after:always">&nbsp;</div>';
 		}
 		$this->id='content';
 		$this->template='common/output.tpl';
