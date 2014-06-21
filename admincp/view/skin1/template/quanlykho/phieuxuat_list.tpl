@@ -43,7 +43,8 @@
                 </select>
                 <br />
                 <input type="button" class="button" name="btnSearch" value="Tìm" onclick="searchForm()"/>
-                <input type="button" class="button" name="btnSearch" value="Xem tất cả" onclick="viewAll()"/>
+                <input type="button" class="button" name="btnViewAll" value="Xem tất cả" onclick="viewAll()"/>
+                <input type="button" class="button" name="btnExport" value="Xuất ra excel" onclick="exportExcel()"/>
             </div>
         	<div class="button right">
             	<?php if($dialog==true){ ?>
@@ -127,8 +128,14 @@ function viewAll()
 	}
 	loadData(url);
 }
-
-function searchForm()
+function exportExcel()
+{
+	var url = createParam();
+	$.get("?route=quanlykho/phieuxuat/export",function(data){
+			window.location = "download.php?url="+ encodeURI(data);
+		});		
+}
+function createParam()
 {
 	var url =  "";
 	if($("#frm_phieunhap #maphieu").val() != "")
@@ -143,6 +150,11 @@ function searchForm()
 		url += "&denngay="+ encodeURI($("#frm_phieunhap #denngay").val());
 	if($("#frm_phieunhap #trangthai").val() != "")
 		url += "&trangthai="+ encodeURI($("#frm_phieunhap #trangthai").val());
+	return url;
+}
+function searchForm()
+{
+	var url = createParam();
 	if("<?php echo $_GET['opendialog']?>" == "true")
 	{
 		url += "&opendialog=true";

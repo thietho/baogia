@@ -126,7 +126,7 @@ $('#title').change(function(e) {
                             <input class="text" type="text" id="barcode" name="barcode" value="<?php echo $post['barcode']?>" size="60" />
                         </p>
                         <p>
-                        	<label>Ref</label><br>
+                        	<label>Ref(Tên viết tắc/Mã số tham chiếu)</label><br>
                             <input class="text" type="text" id="ref" name="ref" value="<?php echo $post['ref']?>" size="60" />
                         </p>
                        	<p>

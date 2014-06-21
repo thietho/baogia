@@ -46,6 +46,16 @@
                         <input type="text" id="diachi" name="diachi" value="<?php echo $item['diachi']?>" class="text" size=60 />
                     </p>
                     <p>
+                    	<label>Tư vấn viên</label><br />
+                        <input list="list_nguoithuchien" id="nguoithuchien" name="nguoithuchien" value="<?php echo $item['nguoithuchien']?>" class="text" size=60 />
+                        <datalist id="list_nguoithuchien">
+                        	<?php foreach($data_nguoithuchien as $val){ ?>
+                            <option value="<?php echo $val['nguoithuchien']?>">
+                            <?php } ?>
+                        	
+                        </datalist>
+                    </p>
+                    <p>
                         <label>Nhà cung cấp</label><br />
                         <span id="nhacungcapview"><?php echo $item['tennhacungcap']?></span>
                         <input type="hidden" id="nhacungcapid" name="nhacungcapid" value="<?php echo $item['nhacungcapid']?>">
