@@ -37,6 +37,7 @@
             <th>SL</th>
             <th>ĐVT</th>
             <th>Giá</th>
+            <th>Giảm</th>
             <th>Thành tiền</th>
         </tr>
     </thead>
@@ -53,7 +54,8 @@
             
             <td align="center"><?php echo $this->string->numberFormate($val['soluong'])?></td>
             <td align="center"><?php echo $this->document->getDonViTinh($val['madonvi'])?></td>
-            <td class="number"><?php echo $this->string->numberFormate($val['giatien'] - $val['giamgia'])?></td>
+            <td class="number"><?php echo $this->string->numberFormate($val['giatien'])?></td>
+            <td class="number"><?php echo $this->string->numberFormate($val['giamgia'])?></td>
             <td class="number"><?php if($val['thanhtien']) echo $this->string->numberFormate($val['thanhtien']); else echo "Tặng"?></td>
             
         </tr>
@@ -62,7 +64,7 @@
             <td align="center"><?php echo $i+1?></td>
             
             <td></td>
-            
+            <td></td>
             <td align="center"></td>
             <td align="center"></td>
             <td class="number"></td>
@@ -79,6 +81,7 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
             <td class="number"><?php echo $this->string->numberFormate($item['thuphi'])?></td>
         </tr>
         <?php } ?>
@@ -86,6 +89,7 @@
             
            	<td></td>
             <td><strong>Cộng</strong></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
