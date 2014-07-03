@@ -31,7 +31,7 @@
             	<?php } ?>
             <?php } ?>
             <tr>
-            	<td></td>
+            	
                 
                 <td class="number">Tổng tồn kho</td>
                 <td class="number"><?php echo $this->string->numberFormate($sum)?></td>
