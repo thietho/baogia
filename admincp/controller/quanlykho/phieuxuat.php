@@ -18,7 +18,7 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 		$this->load->model("quanlykho/phieunhapxuat");
 		$this->load->helper('image');
 		$this->load->model("core/category");
-		
+		$this->load->model("core/media");
 		$this->load->model("quanlykho/donvitinh");
 		
 		$this->data['loaisanpham'] = array();
@@ -27,6 +27,8 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 		$this->data['donvitinh'] = $this->model_quanlykho_donvitinh->getList();
 		$where = " GROUP BY nguoithuchien";
 		$this->data['data_nguoithuchien'] = $this->model_quanlykho_phieunhapxuat->getList($where);
+		$where = " mediatype = 'module/product' ORDER BY `title` ASC";
+		$this->data['data_media'] = $this->model_core_media->getList();
 		//print_r($this->data['data_nguoithuchien']);
    	}
 	public function index()

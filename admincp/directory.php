@@ -1,7 +1,7 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://baogia.holansolutions.com/admincp/');
-define('HTTP_IMAGE', 'http://baogia.holansolutions.com/file/');
+define('HTTP_SERVER', 'http://localhost:81/baogia/admincp/');
+define('HTTP_IMAGE', 'http://localhost:81/baogia/file/');
 
 // HTTPS
 define('HTTPS_SERVER', '');

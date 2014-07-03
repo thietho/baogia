@@ -102,6 +102,18 @@
                         </tbody>
                         <tfoot>
                         	<tr>
+                            	<td>
+                                	<input list="dataproduct" />
+                                    <datalist id="browsers">
+                                        <option value="Internet Explorer">
+                                        <option value="Firefox">
+                                        <option value="Chrome">
+                                        <option value="Opera">
+                                        <option value="Safari">
+                                    </datalist>
+                                </td>
+                            </tr>
+                        	<tr>
                                 
                                 <td></td>
                                 <td></td>
