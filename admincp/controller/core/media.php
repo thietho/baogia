@@ -437,8 +437,8 @@ class ControllerCoreMedia extends Controller
 	//Cac ham xu ly tren form
 	public function getMedia()
 	{
-		$col = $this->request->get['col'];
-		$val = $this->request->get['val'];
+		$col = urldecode($this->request->get['col']);
+		$val = urldecode($this->request->get['val']);
 		$operator = $this->request->get['operator'];
 		if($operator == "")
 			$operator = "equal";
@@ -460,7 +460,6 @@ class ControllerCoreMedia extends Controller
 				break;
 			
 		}
-			
 			
 		$datas = $this->model_core_media->getList($where);
 		foreach($datas as $key => $media)

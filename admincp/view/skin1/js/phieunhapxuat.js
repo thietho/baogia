@@ -225,6 +225,14 @@ function PhieuNhapXuat()
 	{
 		
 	}
+	this.getProbyRef = function(str)
+	{
+		$.getJSON("?route=core/media/getMedia&col=ref&val="+encodeURI(str),function(data)
+		{
+			
+			objdl.addRow(0,data.medias[0].mediaid,data.medias[0].code,data.medias[0].title,1,data.medias[0].madonvi,data.medias[0].price,data.medias[0].pricepromotion,data.medias[0].discountpercent);
+		});
+	}
 }
 
 var objdl = new PhieuNhapXuat();

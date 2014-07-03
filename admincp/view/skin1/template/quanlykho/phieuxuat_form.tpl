@@ -103,13 +103,11 @@
                         <tfoot>
                         	<tr>
                             	<td>
-                                	<input list="dataproduct" />
-                                    <datalist id="browsers">
-                                        <option value="Internet Explorer">
-                                        <option value="Firefox">
-                                        <option value="Chrome">
-                                        <option value="Opera">
-                                        <option value="Safari">
+                                	<input list="dataproduct" id="txt_ref" class="text"/>
+                                    <datalist id="dataproduct">
+                                    	<?php foreach($data_media as $media){ ?>
+                                        <option value="<?php echo $media['ref']?>" >
+                                        <?php } ?>
                                     </datalist>
                                 </td>
                             </tr>
@@ -206,6 +204,13 @@ $(document).ready(function(e) {
     $('#phieunhapxuat').tabs({ fxSlide: true, fxFade: true, fxSpeed: 'slow' });
 	/*$("#nhapkhonguyenlieu").sortable();
 	$("#nhapkhonguyenlieu" ).disableSelection();*/
+});
+$('#txt_ref').keyup(function(e) {
+    if(e.keyCode == 13)
+	{
+		 objdl.getProbyRef(this.value);
+		 this.value = "";
+	}
 });
 $('#btnTrahet').click(function(e) {
     $('#thanhtoan').val($('#tongcong').html());
