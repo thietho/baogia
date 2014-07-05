@@ -43,7 +43,10 @@ class ModelQuanlykhoPhieunhapxuat extends Model
 		$month = $this->date->getMonth($today);
 		$id=(int)@$data['id'];
 		$loaiphieu=$this->db->escape(@$data['loaiphieu']);
-		$maphieu=$this->createMaPhieu($loaiphieu.$year.$this->date->numberFormate($month));
+		$prefix = $loaiphieu;
+		if($loaiphieu == "PBH")
+			$prefix = "CJB";		
+		$maphieu=$this->createMaPhieu($prefix.$year.$this->date->numberFormate($month));
 		$nguoilap=$this->user->getUserName();
 		if($id==0)
 			$ngaylap=$this->date->getToday();
