@@ -1,3 +1,4 @@
+
 <div class="section" id="sitemaplist">
 
 	<div class="section-title"><?php echo $this->document->title?></div>
@@ -102,13 +103,9 @@
                         </tbody>
                         <tfoot>
                         	<tr>
-                            	<td>
-                                	<input list="dataproduct" id="txt_ref" class="text"/>
-                                    <datalist id="dataproduct">
-                                    	<?php foreach($data_media as $media){ ?>
-                                        <option value="<?php echo $media['ref']?>" >
-                                        <?php } ?>
-                                    </datalist>
+                            	<td colspan="8">
+                                	<input type="text" id="txt_ref" class="text" size="100"/>
+                                    
                                 </td>
                             </tr>
                         	<tr>
@@ -205,13 +202,35 @@ $(document).ready(function(e) {
 	/*$("#nhapkhonguyenlieu").sortable();
 	$("#nhapkhonguyenlieu" ).disableSelection();*/
 });
-$('#txt_ref').keyup(function(e) {
+$(function() {
+	var cache = {};
+	$( "#txt_ref" ).autocomplete({
+		minLength: 2,
+		select: function( event, ui ) {
+			//console.log(ui.item.id);
+			objdl.getProbyMediaId(ui.item.id);
+			
+		},
+		source: function( request, response ) {
+		var term = request.term;
+		if ( term in cache ) {
+			response( cache[ term ] );
+			return;
+		}
+		$.getJSON( "?route=core/media/getProduct", request, function( data, status, xhr ) {
+			cache[ term ] = data;
+			response( data );
+			});
+		}
+	});
+});
+/*$('#txt_ref').keyup(function(e) {
     if(e.keyCode == 13)
 	{
-		 objdl.getProbyRef(this.value);
+		 objdl.getProbyMediaId(this.value);
 		 this.value = "";
 	}
-});
+});*/
 $('#btnTrahet').click(function(e) {
     $('#thanhtoan').val($('#tongcong').html());
 	$('#thanhtoan').keyup();

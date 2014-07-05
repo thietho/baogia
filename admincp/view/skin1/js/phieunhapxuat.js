@@ -225,12 +225,19 @@ function PhieuNhapXuat()
 	{
 		
 	}
-	this.getProbyRef = function(str)
+	this.getProbyMediaId = function(str)
 	{
-		$.getJSON("?route=core/media/getMedia&col=ref&val="+encodeURI(str),function(data)
-		{
-			
-			objdl.addRow(0,data.medias[0].mediaid,data.medias[0].code,data.medias[0].title,1,data.medias[0].madonvi,data.medias[0].price,data.medias[0].pricepromotion,data.medias[0].discountpercent);
+		
+		arr = str.split("-");
+		$.getJSON("?route=core/media/getMedia&col=mediaid&val="+encodeURI(arr[0]),function(data)
+		{			
+			if(obj.pricepromotion > 0)
+			{
+				giagiam = data.medias[0].price - data.medias[0].pricepromotion;
+			}
+			objdl.addRow(0,data.medias[0].mediaid,data.medias[0].code,data.medias[0].productName,1,data.medias[0].madonvi,data.medias[0].price,giagiam,data.medias[0].discountpercent);
+			//alert($('#txt_ref').val());
+			$('#txt_ref').val('');
 		});
 	}
 }
