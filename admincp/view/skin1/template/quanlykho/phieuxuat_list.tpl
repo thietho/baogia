@@ -131,7 +131,7 @@ function viewAll()
 function exportExcel()
 {
 	var url = createParam();
-	$.get("?route=quanlykho/phieuxuat/export",function(data){
+	$.get("?route=quanlykho/phieuxuat/export"+url,function(data){
 			window.location = "download.php?url="+ encodeURI(data);
 		});		
 }

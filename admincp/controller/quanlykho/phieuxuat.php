@@ -360,13 +360,14 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 		$objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('A1', 'STT')
 			->setCellValue('B1', 'NGÀY')
-			->setCellValue('C1', 'TÊN KHÁCH HÀNG')
-            ->setCellValue('D1', 'SẢN PHẨM')
+			->setCellValue('C1', 'TÊN KH')
+            ->setCellValue('D1', 'SP')
 			->setCellValue('E1', 'T.TIỀN')
-			->setCellValue('F1', '')
-			->setCellValue('G1', 'TTV')
-            ->setCellValue('H1', 'ĐT')
-			->setCellValue('I1', 'ĐỊA CHỈ')
+			->setCellValue('F1', 'THANH TOÁN')
+			->setCellValue('G', 'NGÀY THANH TOÁN')
+			->setCellValue('H1', 'TTV')
+            ->setCellValue('I1', 'SĐT')
+			->setCellValue('J1', 'ĐỊA CHỈ')
 			;
 		$objPHPExcel->getActiveSheet()->getStyle('A1:I1')->getFont()->setBold(true);
 		/*$objPHPExcel->getActiveSheet()->getStyle('A8')->getAlignment()->setWrapText(true);
