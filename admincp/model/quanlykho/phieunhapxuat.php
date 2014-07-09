@@ -43,7 +43,10 @@ class ModelQuanlykhoPhieunhapxuat extends Model
 		$month = $this->date->getMonth($today);
 		$id=(int)@$data['id'];
 		$loaiphieu=$this->db->escape(@$data['loaiphieu']);
-		$maphieu=$this->createMaPhieu($loaiphieu.$year.$this->date->numberFormate($month));
+		$prefix = $loaiphieu;
+		if($loaiphieu == "PBH")
+			$prefix = "CJB";		
+		$maphieu=$this->createMaPhieu($prefix.$year.$this->date->numberFormate($month));
 		$nguoilap=$this->user->getUserName();
 		if($id==0)
 			$ngaylap=$this->date->getToday();
@@ -64,7 +67,6 @@ class ModelQuanlykhoPhieunhapxuat extends Model
 		$nguoinhan=$this->db->escape(@$data['nguoinhan']);
 		$tongtien=$this->string->toNumber($this->db->escape(@$data['tongtien']));
 		$thanhtoan=$this->string->toNumber($this->db->escape(@$data['thanhtoan']));
-		$ngaythanhtoan = $this->db->escape(@$data['ngaythanhtoan']);
 		$congno = $this->string->toNumber($this->db->escape(@$data['congno']));
 		$ghichu=$this->db->escape(@$data['ghichu']);
 		$songaycongno=$this->string->toNumber($this->db->escape(@$data['songaycongno']));
@@ -91,7 +93,6 @@ class ModelQuanlykhoPhieunhapxuat extends Model
 						'nguoinhan',
 						'tongtien',
 						'thanhtoan',
-						'ngaythanhtoan',
 						'congno',
 						'ghichu',
 						'trangthai',
@@ -118,7 +119,6 @@ class ModelQuanlykhoPhieunhapxuat extends Model
 						$nguoinhan,
 						$tongtien,
 						$thanhtoan,
-						$ngaythanhtoan,
 						$congno,
 						$ghichu,
 						$trangthai,
