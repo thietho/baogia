@@ -364,7 +364,7 @@ class ControllerQuanlykhoPhieuxuat extends Controller
             ->setCellValue('D1', 'SP')
 			->setCellValue('E1', 'T.TIỀN')
 			->setCellValue('F1', 'THANH TOÁN')
-			->setCellValue('G', 'NGÀY THANH TOÁN')
+			->setCellValue('G1', 'NGÀY THANH TOÁN')
 			->setCellValue('H1', 'TTV')
             ->setCellValue('I1', 'SĐT')
 			->setCellValue('J1', 'ĐỊA CHỈ')
@@ -394,11 +394,12 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 				->setCellValue('B'.$key, $this->date->formatMySQLDate($item['ngaylap']))
 				->setCellValue('C'.$key, $item['tenkhachhang'])
 				->setCellValue('D'.$key, $sanpham)
-				->setCellValue('E'.$key, $this->string->numberFormate($item['tongtien']))
-				->setCellValue('F'.$key, '')
-				->setCellValue('G'.$key, $item['nguoithuchien'])
-				->setCellValue('H'.$key, $item['dienthoai'])
-				->setCellValue('I'.$key, $item['diachi'])
+				->setCellValue('E'.$key, $item['tongtien'])
+				->setCellValue('F'.$key, $item['thanhtoan'])
+				->setCellValue('G'.$key, $this->date->formatMySQLDate($item['ngaythanhtoan']))
+				->setCellValue('H'.$key, $item['nguoithuchien'])
+				->setCellValue('I'.$key, $item['dienthoai'])
+				->setCellValue('J'.$key, $item['diachi'])
 				
 				
 				
