@@ -187,7 +187,7 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 	public function printlist()
 	{
 		$listid = $this->request->get['listid'];
-		$arrid = split("-",$listid);
+		@$arrid = split("-",$listid);
 		
 		foreach($arrid as $key => $id)
 		{
@@ -262,7 +262,7 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 			$delnhapkho = $data['delnhapkho'];
 			if($delnhapkho)
 			{
-				$arr_nhapkhoid = split(",",$delnhapkho);
+				@$arr_nhapkhoid = split(",",$delnhapkho);
 				if(count($arr_nhapkhoid))
 				{
 					foreach($arr_nhapkhoid as $nhapkhoid)

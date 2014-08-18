@@ -199,14 +199,14 @@ class Pager
 	
 	function createQueryString($url,$strkey, $setvalue)
 	{
-		$arr = split("\?",$url);
+		@$arr = split("\?",$url);
 		
-		$listpara = split("&",$arr[1]);
+		@$listpara = split("&",$arr[1]);
 		
 		$para = array();
 		foreach($listpara as $val)
 		{
-			$ar = split("=",$val);	
+			@$ar = split("=",$val);	
 			$para[$ar[0]] = $ar[1];
 		}
 		
@@ -224,7 +224,7 @@ class Pager
 	function getURLQueryString($strkey, $setvalue)
 	{
 		$address = $_SERVER['QUERY_STRING'];
-		$arrParams = split("&", $address);
+		@$arrParams = split("&", $address);
 		if(count($arrParams)==1)
 			return "?$address&$strkey=$setvalue";
 		// Go though all elements
