@@ -166,9 +166,10 @@ function postStringData(object) {
 	});
 	return str;
 }
-
+var win;
 function openDialog(url,width,height) {
-    var result = window.showModalDialog(url, "", "dialogWidth:"+width+"px; dialogHeight:"+height+"px;");
+    //var result = window.showModalDialog(url, "", "dialogWidth:"+width+"px; dialogHeight:"+height+"px;");
+	win = window.open(url, "_blank", "toolbar=no, scrollbars=yes, resizable=yes, top=0, left=0, width="+width+", height="+height);
 }
 function daysInMonth(month,year) 
 {
@@ -402,12 +403,10 @@ function browserFile(eid,type)
 			case "editor":
 			case "video":
 			$( "#popup" ).dialog({
-				autoOpen: false,
-				show: "blind",
-				hide: "explode",
+				
 				width: $(document).width()-100,
 				height: window.innerHeight,
-				modal: true,
+				
 				
 			});
 			break;
@@ -570,7 +569,14 @@ function addImageTo()
 		}
 	}
 }
-
+function toPhpTime(t)
+{
+	var d = new Date(t);
+	var date = d.getFullYear()+"-"+ (d.getMonth()<10?"0"+d.getMonth():d.getMonth()) +"-"+d.getDate();
+	var time = (d.getHours()<10?"0"+d.getHours():d.getHours())+":"+(d.getMinutes()<10?"0"+d.getMinutes():d.getMinutes())+":"+ (d.getSeconds()<10?"0"+d.getSeconds():d.getSeconds());
+	
+	return date+" "+time;
+}
 function Attachment()
 {
 	this.index = 0;
@@ -615,4 +621,5 @@ $.ajaxSetup({
             $.xhrPool.splice(index, 1);
         }
     }
+
 });
