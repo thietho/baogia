@@ -124,6 +124,11 @@
         <td align="center"><?php echo $item['nguoithuchien']?></td>
     </tr>
 </table>
-
+<div style="position:absolute;margin-top:-10px">
+	<p>
+    	HÀNG ĐÃ MUA KHÔNG TRẢ LẠI<br>
+		GIỮ LẠI HÓA ĐƠN ĐỂ ĐỐI CHIẾU KHI CẦN
+    </p>
+</div>
 
          
