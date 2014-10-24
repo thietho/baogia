@@ -191,8 +191,13 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 		
 		foreach($arrid as $key => $id)
 		{
+			
 			$arr = array($id);
 			$this->data['output'].= $this->loadModule('quanlykho/phieuxuat','view',$arr);
+			if($key%2!=0 && $key>0)
+			{
+				echo $this->data['output'].= '<p style="page-break-after: always"></p>';
+			}
 			//if($key < count($arrid) - 1)
 				//$this->data['output'] .= '<div style="page-break-after:always">&nbsp;</div>';
 		}

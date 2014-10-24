@@ -101,9 +101,15 @@
 <p style="font-style:italic;text-decoration:underline;">
 	Số tiền bằng chữ: <?php echo $this->string->doc_so($item['tongtien']);?>
 </p>
-<p style="text-align:right">
+<p style="text-align:right;float:right">
     TP.HCM Ngày <?php echo $this->date->getDay($item['ngaylap'])?> tháng <?php echo $this->date->getMonth($item['ngaylap'])?> năm <?php echo $this->date->getYear($item['ngaylap'])?>
 </p>
+
+<p style="float:left">
+    HÀNG ĐÃ MUA KHÔNG TRẢ LẠI<br>
+    GIỮ LẠI HÓA ĐƠN ĐỂ ĐỐI CHIẾU KHI CẦN
+</p>
+<p style="clear:both"></p>
 <table style="margin:5px 0">
 	<tr>
     	
@@ -117,18 +123,11 @@
         <td align="center"><i>(Ký, Họ tên)</i></td>
         <td align="center"><i>(Ký, Họ tên)</i></td>
     </tr>
-    <tr style="height:60px">
+    <tr style="height:50px">
     	
         <td align="center"></td>
         <td align="center"></td>
         <td align="center"><?php echo $item['nguoithuchien']?></td>
     </tr>
 </table>
-<div style="position:absolute;margin-top:-10px">
-	<p>
-    	HÀNG ĐÃ MUA KHÔNG TRẢ LẠI<br>
-		GIỮ LẠI HÓA ĐƠN ĐỂ ĐỐI CHIẾU KHI CẦN
-    </p>
-</div>
-
-         
+ 
