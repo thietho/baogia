@@ -123,7 +123,7 @@
         <td align="center"><i>(Ký, Họ tên)</i></td>
         <td align="center"><i>(Ký, Họ tên)</i></td>
     </tr>
-    <tr style="height:50px">
+    <tr style="height:40px">
     	
         <td align="center"></td>
         <td align="center"></td>
