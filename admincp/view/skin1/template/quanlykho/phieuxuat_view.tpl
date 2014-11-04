@@ -105,9 +105,9 @@
     TP.HCM Ngày <?php echo $this->date->getDay($item['ngaylap'])?> tháng <?php echo $this->date->getMonth($item['ngaylap'])?> năm <?php echo $this->date->getYear($item['ngaylap'])?>
 </p>
 
-<p style="float:left">
-    HÀNG ĐÃ MUA KHÔNG TRẢ LẠI<br>
-    GIỮ LẠI HÓA ĐƠN ĐỂ ĐỐI CHIẾU KHI CẦN
+<p style="float:left;font-style:italic;text-decoration:underline;">
+    Ghi chú: - Hàng đã mua không trả lại<br>
+    - Giữ lại hóa đơn để đối chiếu khi cần
 </p>
 <p style="clear:both"></p>
 <table style="margin:5px 0">
