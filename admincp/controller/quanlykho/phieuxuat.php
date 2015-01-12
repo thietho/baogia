@@ -2,7 +2,7 @@
 class ControllerQuanlykhoPhieuxuat extends Controller
 {
 	private $error = array();
-	private $loaiphieu = "PBH";
+	private $loaiphieu = array('PBH','THNCC');
 	function __construct() 
 	{
 		
@@ -14,7 +14,12 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 			$this->response->redirect('?route=page/home');
 		}
 		
-		
+		$this->data['loaiphieu'] = array(
+								"PBH" => "Phiếu bán hàng",
+								//"XCH" => "Phiếu xuất ra cửa hàng",
+								"THNCC" => "Phiếu xuất trả nhà cung cấp",
+								
+								);
 		$this->load->model("quanlykho/phieunhapxuat");
 		$this->load->helper('image');
 		$this->load->model("core/category");
@@ -96,12 +101,14 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 	private function loadData()
 	{
 		
-		$where = " AND loaiphieu='".$this->loaiphieu."'";
+		$where = " AND loaiphieu in ('". implode("','", $this->loaiphieu) ."') ";
 		
 		$datasearchlike['maphieu'] = urldecode($this->request->get['maphieu']);
 		$datasearchlike['trangthai'] = urldecode($this->request->get['trangthai']);
 		
 		$datasearchlike['tenkhachhang'] = urldecode($this->request->get['tenkhachhang']);
+		$datasearchlike['dienthoai'] = urldecode($this->request->get['dienthoai']);
+		$datasearchlike['diachi'] = urldecode($this->request->get['diachi']);
 		$datasearchlike['nguoithuchien'] = urldecode($this->request->get['nguoithuchien']);
 		
 		$arr = array();
@@ -172,7 +179,7 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 		{
       		$this->data['item'] = $this->model_quanlykho_phieunhapxuat->getItem($id);
 			
-			$where = " AND phieuid = '".$id."'";
+			$where = " AND phieuid = '".$id."' ORDER BY `vitri` ASC";
 			$this->data['data_nhapkho'] = $this->model_quanlykho_phieunhapxuat->getPhieuNhapXuatMediaList($where);
 			
 			
@@ -180,6 +187,8 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 		
 		$this->id='content';
 		$this->template='quanlykho/phieuxuat_view.tpl';
+		if($_GET['show']=="giamgia")
+			$this->template='quanlykho/phieuxuat_view1.tpl';
 		if($_GET['opendialog'] == 'print')
 			$this->layout="layout/print";
 		$this->render();
@@ -191,13 +200,8 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 		
 		foreach($arrid as $key => $id)
 		{
-			
 			$arr = array($id);
 			$this->data['output'].= $this->loadModule('quanlykho/phieuxuat','view',$arr);
-			if($key%2!=0 && $key>0)
-			{
-				echo $this->data['output'].= '<p style="page-break-after: always"></p>';
-			}
 			//if($key < count($arrid) - 1)
 				//$this->data['output'] .= '<div style="page-break-after:always">&nbsp;</div>';
 		}
@@ -213,11 +217,13 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 		{
       		$this->data['item'] = $this->model_quanlykho_phieunhapxuat->getItem($id);
 			$this->data['item']['imagethumbnail'] = HelperImage::resizePNG($this->data['item']['imagepath'], 200, 200);
-			$where = " AND phieuid = '".$id."'";
+			$where = " AND phieuid = '".$id."' ORDER BY `vitri` ASC";
 			$this->data['data_nhapkho'] = $this->model_quanlykho_phieunhapxuat->getPhieuNhapXuatMediaList($where);
     	}
 		else
 		{
+			
+			//$this->data['item']['ngaylap'] = $this->date->getToday();
 			if(isset($_SESSION['productlist']))
 			{
 				$medias = $_SESSION['productlist'];
@@ -254,6 +260,7 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 		if($this->validateForm($data))
 		{
 			$nhanvien = $this->user->getNhanVien();
+			$data['ngaylap'] = $this->date->formatViewDate($data['ngaylap']);
 			$data['ngaythanhtoan'] = $this->date->formatViewDate($data['ngaythanhtoan']);
 			if($data['nguoithuchien']=="")
 			{
@@ -286,6 +293,7 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 			$arr_giatien = $data['giatien'];
 			$arr_giamgia = $data['giamgia'];
 			$arr_phantramgiamgia = $data['phantramgiamgia'];
+			$index = 0;
 			foreach($arr_mediaid as $i => $mediaid)
 			{
 				$dl['id'] = $nhapkhoid[$i];
@@ -310,9 +318,10 @@ class ControllerQuanlykhoPhieuxuat extends Controller
 				$dl['nguoigiao'] = $phieu['nguoigiao'];
 				$dl['nguoinhanid'] = $phieu['nguoinhanid'];
 				$dl['nguoinhan'] = $phieu['nguoinhan'];
+				$dl['vitri'] = $index;
 				$this->model_quanlykho_phieunhapxuat->savePhieuNhapXuatMedia($dl);
 				$tongtien += $this->string->toNumber($dl['soluong'])*$this->string->toNumber($dl['giatien']);
-				
+				$index++;
 			}
 			//$this->model_quanlykho_phieunhapxuat->updateCol($phieuid,'tongtien',$tongtien);
 			//$this->model_quanlykho_phieunhapxuat->updateCol($phieuid,'congno',$tongtien- $this->string->toNumber($data['thanhtoan']));
@@ -369,7 +378,7 @@ class ControllerQuanlykhoPhieuxuat extends Controller
             ->setCellValue('D1', 'SP')
 			->setCellValue('E1', 'T.TIỀN')
 			->setCellValue('F1', 'THANH TOÁN')
-			->setCellValue('G1', 'GHI CHÚ')
+			->setCellValue('G1', 'NGÀY THANH TOÁN')
 			->setCellValue('H1', 'TTV')
             ->setCellValue('I1', 'SĐT')
 			->setCellValue('J1', 'ĐỊA CHỈ')

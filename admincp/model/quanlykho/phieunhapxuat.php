@@ -48,10 +48,11 @@ class ModelQuanlykhoPhieunhapxuat extends Model
 			$prefix = "CJB";		
 		$maphieu=$this->createMaPhieu($prefix.$year.$this->date->numberFormate($month));
 		$nguoilap=$this->user->getUserName();
-		if($id==0)
+		/*if($id==0)
 			$ngaylap=$this->date->getToday();
 		else
-			$ngaylap=$this->db->escape(@$data['ngaylap']);
+			$ngaylap=$this->db->escape(@$data['ngaylap']);*/
+		$ngaylap=$this->db->escape(@$data['ngaylap']);
 		$loaiphieu=$this->db->escape(@$data['loaiphieu']);
 		$nguoithuchienid=$this->db->escape(@$data['nguoithuchienid']);
 		$nguoithuchien=$this->db->escape(@$data['nguoithuchien']);
@@ -214,7 +215,7 @@ class ModelQuanlykhoPhieunhapxuat extends Model
 		
 		$maphieu=$this->db->escape(@$data['maphieu']);
 		$ngaylap=$this->db->escape(@$data['ngaylap']);
-		$ngaylap=$this->db->escape(@$data['ngaylap']);
+		
 		
 		$nhacungcapid=$this->db->escape(@$data['nhacungcapid']);
 		$tennhacungcap=$this->db->escape(@$data['tennhacungcap']);
