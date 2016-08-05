@@ -1,6 +1,6 @@
 
 <center>
-    <h1>HÓA ĐƠN BÁN HÀNG</h1>
+    <h1>HÓA ĐƠN</h1>
     
 </center>
 <table>
