@@ -105,17 +105,17 @@
     TP.HCM Ngày <?php echo $this->date->getDay($item['ngaylap'])?> tháng <?php echo $this->date->getMonth($item['ngaylap'])?> năm <?php echo $this->date->getYear($item['ngaylap'])?>
 </p>
 
-<p style="float:left;font-style:italic;text-decoration:underline;">
+<!--<p style="float:left;font-style:italic;text-decoration:underline;">
     Ghi chú: - Hàng đã mua không trả lại<br>
     - Giữ lại hóa đơn để đối chiếu khi cần
-</p>
+</p>-->
 <p style="clear:both"></p>
 <table style="margin:5px 0">
 	<tr>
     	
         <th width="20%">Thủ Trưởng Đơn Vị</th>
         <th width="20%">Thủ Kho</th>
-        <th width="20%">TVV Bán Hàng</th>
+        <th width="20%">Người kê đơn</th>
     </tr>
     <tr>
     	
